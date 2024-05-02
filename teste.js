@@ -1,99 +1,97 @@
 
-//FUNÇÃO PARA CLICAR NO BISCOITO FECHADO E ABRIR O BISCOITO DA SORTE
+// FUNCTION TO CLICK ON THE CLOSED COOKIE AND OPEN THE FORTUNE COOKIE
 
 function handleClick() {
-    // Seleciona o elemento #closed-cookie e o elemento #open-cookie
+    // Selects the #closed-cookie element and the #open-cookie element
     var closedCookie = document.getElementById('closed-cookie');
     var openCookie = document.getElementById('open-cookie');
 
-    
-    // Verifica se o elemento #closed-cookie existe
+    // Checks if the #closed-cookie element exists
     if (closedCookie) {
-        // Esconde o elemento #closed-cookie
+        // Hides the #closed-cookie element
         closedCookie.style.display = 'none';
     }
-    
-    // Verifica se o elemento #open-cookie existe
+
+    // Checks if the #open-cookie element exists
     if (openCookie) {
-        // Exibe o elemento #open-cookie
+        // Displays the #open-cookie element
         openCookie.style.display = 'block';
     }
-
 }
 
-//FUNÇÃO PARA CLICAR NO BISCOITO NO BOTÃO DO BISCOITO DA SORTE ABERTO E ELE VOLTAR AO ESTADO ORIGINAL
+// FUNCTION TO CLICK ON THE COOKIE ON THE OPEN COOKIE BUTTON AND RETURN IT TO THE ORIGINAL STATE
 
-// Função para lidar com o clique no botão "Abrir Outro Biscoito"
+// Function to handle click on the "Open Another Cookie" button
 function handleOpenAnotherCookie() {
-    // Seleciona os elementos #closed-cookie e #open-cookie
+    // Selects the #closed-cookie and #open-cookie elements
     var closedCookie = document.getElementById('closed-cookie');
     var openCookie = document.getElementById('open-cookie');
-    
-    // Verifica se o elemento #closed-cookie existe e está oculto
+
+    // Checks if the #closed-cookie element exists and is hidden
     if (closedCookie && closedCookie.style.display === 'none') {
-        // Exibe o elemento #closed-cookie
+        // Displays the #closed-cookie element
         closedCookie.style.display = 'block';
     }
-    
-    // Verifica se o elemento #open-cookie existe e está visível
+
+    // Checks if the #open-cookie element exists and is visible
     if (openCookie && openCookie.style.display !== 'none') {
-        // Oculta o elemento #open-cookie
+        // Hides the #open-cookie element
         openCookie.style.display = 'none';
     }
 }
 
-// Seleciona o botão "Abrir Outro Biscoito"
+// Selects the "Open Another Cookie" button
 var openAnotherCookieButton = document.getElementById('open-another-cookie');
 
-// Adiciona um ouvinte de eventos para o clique no botão
+// Adds an event listener for click on the button
 if (openAnotherCookieButton) {
     openAnotherCookieButton.addEventListener('click', handleOpenAnotherCookie);
 }
 
-//FUNÇÃO PARA ALTERAR E SORTEAR MENSAGENS ALEATÓRIAS:
-// Array de mensagens aleatórias
+// FUNCTION TO CHANGE AND RANDOMLY SELECT FORTUNE MESSAGES:
+// Array of random messages
 var fortuneMessages = [
-    "Seja Feliz, a vida é uma só",
-    "Aproveite cada momento da sua vida",
-    "Grandes realizações estão por vir",
-    "Acredite nos seus sonhos e siga em frente",
-    "Seja grato pelo que você tem",
-    "Tudo vai dar certo no final",
-    "Mantenha uma atitude positiva",
-    "O sucesso está no seu horizonte"
+    "Be happy, life is only one",
+    "Enjoy every moment of your life",
+    "Great achievements are coming",
+    "Believe in your dreams and move forward",
+    "Be grateful for what you have",
+    "Everything will be fine in the end",
+    "Maintain a positive attitude",
+    "Success is on your horizon"
 ];
 
-// Função para selecionar uma mensagem aleatória
+// Function to select a random message
 function selectRandomMessage() {
-    // Gera um índice aleatório com base no comprimento do array de mensagens
+    // Generates a random index based on the length of the message array
     var randomIndex = Math.floor(Math.random() * fortuneMessages.length);
-    // Retorna a mensagem correspondente ao índice aleatório
+    // Returns the message corresponding to the random index
     return fortuneMessages[randomIndex];
 }
 
-// Função para atualizar o texto da mensagem no elemento HTML
+// Function to update the message text in the HTML element
 function updateFortuneText() {
-    // Seleciona o elemento <p> com o id "fortune-text"
+    // Selects the <p> element with the id "fortune-text"
     var fortuneTextElement = document.getElementById("fortune-text");
-    // Verifica se o elemento foi encontrado
+    // Checks if the element was found
     if (fortuneTextElement) {
-        // Seleciona uma mensagem aleatória
+        // Selects a random message
         var randomMessage = selectRandomMessage();
-        // Atualiza o texto da mensagem no elemento HTML
+        // Updates the message text in the HTML element
         fortuneTextElement.textContent = randomMessage;
     }
 }
 
-// Função para recarregar a página
+// Function to reload the page
 function reloadPage() {
-    location.reload(); // Recarrega a página
+    location.reload(); // Reloads the page
 }
 
-// Adiciona um event listener ao botão "Abrir Outro Biscoito"
+// Adds an event listener to the "Open Another Cookie" button
 var openAnotherCookieButton = document.getElementById("open-another-cookie");
 if (openAnotherCookieButton) {
     openAnotherCookieButton.addEventListener("click", reloadPage);
 }
 
-// Chama a função updateFortuneText() para exibir uma mensagem aleatória inicialmente
+// Calls the updateFortuneText() function to display a random message initially
 updateFortuneText();
